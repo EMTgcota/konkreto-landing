@@ -11,7 +11,7 @@ export const Navbar = () => {
   return (
     <>
       <nav
-        className={`p-4 flex justify-between items-center relative md:pr-10 transition-all duration-300 
+        className={`py-2 px-8 flex justify-between items-center relative md:pr-10 transition-all duration-300 
       ${
         location.pathname === "/information"
           ? "bg-transparent text-purple-700"
@@ -73,7 +73,7 @@ export const Navbar = () => {
             Iniciar sesión
           </button>
 
-          <button className="block md:inline hover:font-bold sm:my-3">
+          <button className="block md:inline hover:font-bold mt-1">
             Contacto
           </button>
 

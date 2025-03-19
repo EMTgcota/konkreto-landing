@@ -2,8 +2,7 @@
 import "./App.css";
 import { useEffect, useState } from "react";
 import logo from "./assets/white-logo.png";
-import purpleLogo from "./assets/purple-logo.png";
-
+import bg from "./assets/bg-1.png";
 import { motion } from "framer-motion";
 import { Navbar } from "./components/navbar";
 import Footer from "./components/footer";
@@ -47,22 +46,29 @@ function App() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
+
   return (
     <div className="min-h-screen bg-purple-100 text-gray-800">
       {/* Navbar */}
       <Navbar activeRoute={"home"}></Navbar>
       {/* HEader Section */}
-      <header
-        className="flex items-center justify-start py-20 px-10 bg-cover bg-center"
-        style={{ backgroundImage: "url('/phone-background.png')" }}
-      >
-        <div className="max-w-xl py-28 lg:pl-32">
-          <h2 className="text-4xl text-left font-semibold text-purple-700">
-            Tecnología amigable para
-          </h2>
-          <h2 className="text-4xl text-left  font-bold text-purple-700">
-            gestión y protección de negocios inmobiliarios
-          </h2>
+      <header className="flex items-center justify-start  px-10 py-20 bg-cover bg-center">
+        <div
+          className="w-full h-[90%]]"
+          style={{
+            backgroundImage: `url(${bg})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "repeat-x",
+          }}
+        >
+          <div className="max-w-xl py-28 lg:pl-32">
+            <h2 className="text-4xl text-left font-semibold text-purple-700">
+              Tecnología amigable para
+            </h2>
+            <h2 className="text-4xl text-left  font-bold text-purple-700">
+              gestión y protección de negocios inmobiliarios
+            </h2>
+          </div>
         </div>
       </header>
       {/* Information Section */}
@@ -122,7 +128,7 @@ function App() {
       </section>
 
       {/* Carousel Section */}
-      <section className=" bg-sky-200 p-10 py-10 flex justify-center text-center">
+      <section className=" bg-customCyan bg-opacity-20 p-10 py-10 flex justify-center text-center">
         <div className="max-w-2xl">
           <p className="text-3xl font-bold text-purple-700 ">
             Konkreto es la plataforma

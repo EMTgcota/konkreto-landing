@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Navbar } from "../components/navbar";
 import {
   FaCalendarAlt,
-  FaHome,
   FaFileInvoiceDollar,
   FaHandshake,
   FaSearchDollar,
@@ -12,50 +11,58 @@ import ContactSection from "../components/contact-section";
 import working from "../assets/working.jpg";
 import hands from "../assets/hands.jpg";
 import agency from "../assets/agency.jpg";
-
+import bg from "../assets/bg-2.svg";
+import map from "../assets/icons/map.svg";
+import cellphone from "../assets/icons/cellphone.svg";
+import db from "../assets/icons/db.svg";
+import following from "../assets/icons/following.svg";
+import money from "../assets/icons/money.svg";
+import tools from "../assets/icons/tools.svg";
+import valuation from "../assets/icons/valuation.svg";
+import verification from "../assets/icons/verification.svg";
 const Info = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
   const benefits = [
     {
-      icon: "🌍",
+      icon: map,
       title: "Primera plataforma",
       description: "de real estate integral",
     },
     {
-      icon: "🔒",
+      icon: verification,
       title: "Seguridad",
       description: "360°",
     },
     {
-      icon: "⚙️",
+      icon: tools,
       title: "Facilitador",
       description: "de herramientas digitales",
     },
     {
-      icon: "💰",
+      icon: money,
       title: "Ahorro",
       description: "en tiempos y costos operativos",
     },
     {
-      icon: "📂",
+      icon: db,
       title: "Base de datos",
       description: "actualizada",
     },
     {
-      icon: "📊",
+      icon: valuation,
       title: "Reportes de actividad",
       description: "del inmueble",
     },
     {
-      icon: "💬",
+      icon: following,
       title: "Seguimiento oportuno",
       description: "a interesados y propiedades",
     },
   ];
   const solutions = [
     {
-      icon: <FaHome />,
+      icon: "../assets/icons/map.svg",
       title: "Administración",
       description:
         "de propiedades publicadas en portales líderes en el mercado.",
@@ -176,15 +183,19 @@ const Info = () => {
   };
 
   return (
-    <div className="min-h-screen bg-cyan-50 text-gray-800">
+    <div className="min-h-screen bg-customCyan bg-opacity-20 text-gray-800">
       <Navbar></Navbar>
 
       <header
-        className="flex items-center justify-items-end py-32 px-10 bg-cover bg-center"
-        style={{ backgroundImage: "url('/phone-background.png')" }}
+        className="flex items-center justify-items-end py-32 px-10  bg-center bg-cyan-50 "
+        style={{
+          backgroundImage: `url(${bg})`,
+          backgroundSize: "cover",
+          backgroundRepeat: "repeat",
+        }}
       >
-        <div className=" w-full py-28 lg:pr-40 justify-items-end">
-          <h2 className="text-4xl text-left  font-semibold text-purple-700">
+        <div className=" w-full py-28 sm:pb-28 pt-20 lg:pr-40 justify-items-end">
+          <h2 className="text-4xl text-left  font-semibold md:text-purple-700 sm:text-black">
             <span className="font-normal"> Todas las herramientas</span>{" "}
             <br></br> para tu negocio inmobiliario
             <br></br> en un solo lugar
@@ -192,7 +203,7 @@ const Info = () => {
         </div>
       </header>
 
-      <section className="bg-purple-700 p-10 py-14 mt-6 flex justify-center text-center">
+      <section className="bg-purple-700 p-10 py-24 mt-6 flex justify-center text-center">
         <div className="max-w-2xl">
           <p className="md:text-2xl sm:text-xl  text-white font-bold">
             Konkreto{" "}
@@ -211,13 +222,14 @@ const Info = () => {
 
       {/* Why Konkreto section */}
       <section className="bg-purple-100 py-10 px-4">
-        <h2 className="text-center text-4xl font-bold text-purple-700 mb-6 mt-10">
+        <h2 className="text-center text-4xl font-bold text-purple-700 mb-6 mt-10 mb-16">
           ¿Por qué Konkreto?
         </h2>
-        <div className="flex flex-wrap justify-center gap-6 my-16">
+        <div className="flex flex-wrap justify-center gap-6 my-13 mb-14">
           {benefits.map((benefit) => (
-            <div className="flex flex-col items-center text-center max-w-xs mx-5">
-              <div className="text-4xl text-purple-700">{benefit.icon}</div>
+            <div className="flex flex-col items-center text-center max-w-xs mx-5 my-6">
+              <img src={benefit.icon} alt="" class="w-12 h-12 object-contain" />
+
               <h3 className="text-md font-bold text-orange-600 mt-2">
                 {benefit.title}
               </h3>
@@ -244,7 +256,7 @@ const Info = () => {
               <div
                 className={`flex items-center justify-center w-20 ${solution.color} text-5xl`}
               >
-                {solution.icon}
+                <img src={solution.icon} alt="" />
               </div>
 
               {/* Contenedor de texto */}

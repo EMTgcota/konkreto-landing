@@ -130,7 +130,7 @@ const ModalLogin = ({ isOpen, setIsOpen }) => {
               Aviso de privacidad
             </a>
           </p>
-          <p className="mt-2">Copyright © 2022.</p>
+          <p className="mt-2">Copyright © 2025.</p>
         </div>
       </motion.div>
     </div>
