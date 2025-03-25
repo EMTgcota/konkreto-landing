@@ -73,9 +73,7 @@ export const Navbar = () => {
             Iniciar sesión
           </button>
 
-          <button className="block md:inline hover:font-bold mt-1">
-            Contacto
-          </button>
+          <button className="block md:inline hover:font-bold ">Contacto</button>
 
           <button
             className={`px-4 py-2 max-h-[60px] mt-1 font-bold block md:inline rounded 

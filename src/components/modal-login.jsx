@@ -8,14 +8,54 @@ import {
   FaEye,
   FaEyeSlash,
 } from "react-icons/fa";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+
 import { IoMdClose } from "react-icons/io";
 import purpleLogo from "../assets/purple-logo.png";
 import { FaFacebookF } from "react-icons/fa6";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebaseConfig";
 
 const ModalLogin = ({ isOpen, setIsOpen }) => {
   const [emailFocused, setEmailFocused] = useState(false);
   const [passwordFocused, setPasswordFocused] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [showError, setShowError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const handleChangeInput = async (e) => {
+    setCredentials({
+      ...credentials,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const onSubmit = async () => {
+    setShowError(false);
+    setIsLoading(true);
+    try {
+      const resp = await signInWithEmailAndPassword(
+        auth,
+        credentials.email,
+        credentials.password
+      );
+
+      setIsLoading(false);
+      if (resp.user) {
+        const token = btoa(`${credentials.email}:${credentials.password}`);
+
+        window.location.href = `http://localhost:4200/external-auth/${token}`;
+      }
+      console.log(resp.user);
+    } catch (error) {
+      setIsLoading(false);
+
+      const errorMsg = error.toString();
+      const match = errorMsg.match(/\((.*?)\)/);
+      if (match[1] === "auth/invalid-credential") setShowError(true);
+    }
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -34,18 +74,22 @@ const ModalLogin = ({ isOpen, setIsOpen }) => {
         </button>
 
         <div className="mt-4 justify-items-center">
-          <img
-            src={purpleLogo}
-            alt=""
-            className="w-[200px] text-center mb-10"
-          />
-          <div className="relative mb-3 w-full px-5">
+          <img src={purpleLogo} alt="" className="w-[200px] text-center " />
+
+          {showError && (
+            <div className="bg-red-200 w-full h-[30px] border-solid border-2 border-red-400 text-center text-red-900 mt-4 ">
+              Correo o contraseña incorrectos
+            </div>
+          )}
+          <div className="relative mb-3 w-full px-5 mt-8">
             <FaAt
               color="purple"
               className="absolute left-7 top-1/2 transform -translate-y-1/2 text-gray-500"
             />
             <input
               type="email"
+              name="email"
+              onChange={(e) => handleChangeInput(e)}
               placeholder="Correo electrónico"
               className={`w-full pl-10 p-2 border-b-2 outline-none transition-all ${
                 emailFocused ? "border-purple-600" : "border-gray-300"
@@ -62,6 +106,8 @@ const ModalLogin = ({ isOpen, setIsOpen }) => {
             <input
               type={showPassword ? "text" : "password"}
               placeholder="Contraseña"
+              onChange={(e) => handleChangeInput(e)}
+              name="password"
               className={`w-full pl-10 p-2 border-b-2 outline-none transition-all ${
                 passwordFocused ? "border-purple-600" : "border-gray-300"
               }`}
@@ -87,8 +133,20 @@ const ModalLogin = ({ isOpen, setIsOpen }) => {
           </p>
         </div>
         <div className="mt-4">
-          <button className="w-full bg-purple-600 text-white hover:bg-purple-700 py-3 rounded-sm">
-            Iniciar sesión
+          <button
+            className="w-full bg-purple-600 text-white hover:bg-purple-700 py-3 rounded-sm text-center justify-center items-center flex"
+            onClick={() => onSubmit()}
+          >
+            {isLoading ? (
+              <motion.div
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+              >
+                <AiOutlineLoading3Quarters className="text-[24px]" />
+              </motion.div>
+            ) : (
+              "Iniciar Sesión"
+            )}
           </button>
         </div>
         <p className="text-center text-gray-500 text-sm mt-3 cursor-pointer mb-10">

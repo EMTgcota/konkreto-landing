@@ -114,16 +114,19 @@ function App() {
         </div>
       </section>
       {/* Video Section */}
-      <section className=" bg-white p-10 py-10 flex justify-center text-center">
-        <div className="max-w-2xl">
+      <section className="bg-white p-10 flex justify-center text-center">
+        <div className="w-full max-w-2xl flex flex-col items-center">
           <p className="text-3xl font-bold text-purple-700 pb-10">
             ¿Cómo funciona?
           </p>
-          <img
-            src="https://media.istockphoto.com/id/1298333137/es/vector/reproductor-multimedia-de-redes-sociales-plantilla-de-sitio-de-redes-sociales-con.jpg?s=612x612&w=0&k=20&c=WKaIEE4e8Ww49XjMRESIQUaTMeW6fiBvCUU3Orf5gPA="
-            alt=""
-            className="w-[700px]  py-5 item-center text-center object-contain mx-auto br-10"
-          ></img>
+          <div className="w-full max-w-[1280px] aspect-video">
+            <iframe
+              className="w-full h-full"
+              title="."
+              src="https://drive.google.com/file/d/1oo-E2HNM1ZNmO1IzjSFm5GOAUWOeDeS3/preview"
+              allow="autoplay"
+            ></iframe>
+          </div>
         </div>
       </section>
 

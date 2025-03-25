@@ -13,13 +13,29 @@ import hands from "../assets/hands.jpg";
 import agency from "../assets/agency.jpg";
 import bg from "../assets/bg-2.svg";
 import map from "../assets/icons/map.svg";
-import cellphone from "../assets/icons/cellphone.svg";
 import db from "../assets/icons/db.svg";
 import following from "../assets/icons/following.svg";
 import money from "../assets/icons/money.svg";
 import tools from "../assets/icons/tools.svg";
 import valuation from "../assets/icons/valuation.svg";
 import verification from "../assets/icons/verification.svg";
+
+import admon from "../assets/Solutions/admon.png";
+import appointments from "../assets/Solutions/appointments.png";
+import billing from "../assets/Solutions/billing.png";
+import calc from "../assets/Solutions/calc.png";
+import credit from "../assets/Solutions/calc.png";
+import escrow from "../assets/Solutions/escrow.png";
+import loyal from "../assets/Solutions/loyal.png";
+import notarias from "../assets/Solutions/notarias.png";
+import offer from "../assets/Solutions/offer.png";
+import payment from "../assets/Solutions/payment.png";
+import research from "../assets/Solutions/research.png";
+import search from "../assets/Solutions/search.png";
+import treats from "../assets/Solutions/treats.png";
+import valuationImg from "../assets/Solutions/valuation.png";
+import verificationImg from "../assets/Solutions/verification.png";
+
 const Info = () => {
   const [expandedIndex, setExpandedIndex] = useState(null);
 
@@ -62,35 +78,35 @@ const Info = () => {
   ];
   const solutions = [
     {
-      icon: "../assets/icons/map.svg",
+      icon: admon,
       title: "Administración",
       description:
         "de propiedades publicadas en portales líderes en el mercado.",
       color: "text-orange-500",
     },
     {
-      icon: <FaCalendarAlt />,
+      icon: appointments,
       title: "Agendar",
       description:
         "a través de un calendario las visitas al inmueble, presencial o remoto en tiempo real.",
       color: "text-orange-500",
     },
     {
-      icon: <FaSearchDollar />,
+      icon: billing,
       title: "Verificar",
       description:
         "la identidad de las personas para garantizar la seguridad del propietario o corredor.",
       color: "text-orange-500",
     },
     {
-      icon: <FaHandshake />,
+      icon: calc,
       title: "Cerrar operación",
       description:
         "con la firma digital del contrato (DocuSign), con plena validez legal.",
       color: "text-orange-500",
     },
     {
-      icon: <FaFileInvoiceDollar />,
+      icon: credit,
       title: "Facturación",
       description:
         "Facilitamos la facturación para todas tus transacciones inmobiliarias.",
@@ -256,11 +272,15 @@ const Info = () => {
               <div
                 className={`flex items-center justify-center w-20 ${solution.color} text-5xl`}
               >
-                <img src={solution.icon} alt="" />
+                <img
+                  src={solution.icon}
+                  alt=""
+                  className="mr-2 w-15  h-15  object-contain"
+                />
               </div>
 
               {/* Contenedor de texto */}
-              <div className="flex-1 flex flex-col justify-center text-left">
+              <div className="flex-1 flex flex-col justify-center text-left ml-2">
                 <h3 className={`font-bold text-lg ${solution.color}`}>
                   {solution.title}
                 </h3>

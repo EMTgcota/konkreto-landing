@@ -1,7 +1,36 @@
 import React from "react";
 import purpleLogo from "../assets/purple-logo.png";
+import { Uris } from "../uris";
 
 const ContactSection = () => {
+  const sendEmail = async (data) => {
+    try {
+      const response = await fetch(
+        "https://us-central1-konkreto-cf366.cloudfunctions.net/api/email/send",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            to: "gcota@emt.dev",
+            templateId: "d-dcd953f85d944a51acffa479993610c0",
+            dynamic_template_data: data,
+          }),
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error(`Error: ${response.status} - ${await response.text()}`);
+      }
+
+      const result = await response.json();
+      console.log("Email sent successfully:", result);
+      return result;
+    } catch (error) {
+      console.error("Error sending email:", error);
+    }
+  };
   return (
     <section className="flex justify-center items-center py-20 bg-white">
       <div className="bg-purple-200 p-8 rounded-lg shadow-lg w-full max-w-6xl md:mx-10 flex flex-col md:flex-row items-center">
